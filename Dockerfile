@@ -6,6 +6,6 @@ FROM python:3.6.8-alpine
 COPY requirements.txt /app/
 RUN pip install -r /app/requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
 COPY app.py /app/
-RUN export FLASK_APP=app
+RUN export FLASK_APP=/app/app.py
 # "app.run(port=8080)" not working, specify the port here
 ENTRYPOINT flask run -h 0.0.0.0 -p 8080
