@@ -34,6 +34,13 @@ def default_color():
     return render_template('hello.html', name=socket.gethostname(), color=color_codes[color])
 
 
+@app.route("/round_color")
+def round_color():
+    new_color = os.environ.get('APP_COLOR') or random.choice(
+    ["red", "green", "blue", "blue2", "darkblue", "pink"])
+    return render_template('hello.html', name=socket.gethostname(), color=color_codes[new_color])
+
+
 @app.route('/color/<new_color>')
 def new_color(new_color):
     return render_template('hello.html', name=socket.gethostname(), color=color_codes[new_color])
